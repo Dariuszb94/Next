@@ -13,7 +13,7 @@ export default function Home() {
         <h1 className={styles.title}>Welcome to our demo blog!</h1>
 
         <p>
-          You can find more articles on the{" "}
+   
           <Link href="/blog">
             <a>blog articles page</a>
           </Link>
