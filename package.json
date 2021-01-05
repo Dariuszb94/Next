@@ -1,0 +1,16 @@
+{
+  "name": "headless-wp-demo",
+  "homepage": "https://Dariuszb94.github.io/Next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.0.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
