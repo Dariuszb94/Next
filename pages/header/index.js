@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Menu from "./HeaderComponents/Menu";
-// import Logo from "../../Assets/logo_front.png";
 import { getMenu } from "../../lib/api";
-
 const Header = ({ menu }) => {
   const [showMenu, showMenuChange] = useState(false);
   return (
@@ -10,7 +8,7 @@ const Header = ({ menu }) => {
       {menu ? (
         <div className="header__content">
           <a href="/Youngmedia">
-            {/* <img className="header__logo" src={Logo} alt="ym" /> */}
+            <img className="header__logo" src="/logo_front.png" alt="ym" />
           </a>
           <Menu menuItems={menu} showMenu={showMenu} />
           {/* {!showMenu ? (

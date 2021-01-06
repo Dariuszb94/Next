@@ -7,14 +7,14 @@ import { getMenu } from "../lib/api";
 
 export default function Home({ allPosts: { edges } }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header menu={edges} />
       <main>
-        {/* <Banner /> */}
+        <Banner />
         <Link href="/blog">
           <a>blog articles page</a>
         </Link>

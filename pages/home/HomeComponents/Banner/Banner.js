@@ -1,16 +1,11 @@
 import React from "react";
-import styles from "../../../../styles/Banner.module.css";
-import { getMenu } from "../../../../lib/api";
-const Banner = ({ allPosts: { edges } }) => {
-  return <section>{edges.map(({ node }) => console.log(node))}</section>;
+const Banner = () => {
+  return (
+    <section className="banner">
+      <h1 className="banner__quote">DO GŁOWY POMYSŁY WPADAJĄ OD WEWNĄTRZ</h1>
+      <span className="banner__author">Stanisław Jerzy Lec</span>
+    </section>
+  );
 };
 
 export default Banner;
-export async function getServerSideProps() {
-  const allPosts = await getMenu();
-  return {
-    props: {
-      allPosts,
-    },
-  };
-}
