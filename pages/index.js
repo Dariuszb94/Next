@@ -1,34 +1,35 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-export default function Home() {
+import Banner from "./home/HomeComponents/Banner/Banner";
+import Header from "./header";
+import { getMenu } from "../lib/api";
+
+export default function Home({ allPosts: { edges } }) {
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to our demo blog!</h1>
-
-        <p>
-          <Link href="/blog">
-            <a>blog articles page</a>
-          </Link>
-        </p>
+      <Header menu={edges} />
+      <main>
+        {/* <Banner /> */}
+        <Link href="/blog">
+          <a>blog articles page</a>
+        </Link>
       </main>
+      <section>{edges.map(({ node }) => console.log(node))}</section>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      <footer className={styles.footer}></footer>
     </div>
   );
+}
+export async function getServerSideProps() {
+  const allPosts = await getMenu();
+  return {
+    props: {
+      allPosts,
+    },
+  };
 }

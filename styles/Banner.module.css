@@ -1,0 +1,26 @@
+.banner{
+  position: relative;
+  top: 80px;
+height: calc(100vh - 80px);
+overflow: hidden;
+background-image:url("../Assets/motto-bg.jpg");
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+animation:banner-rollout ease-in-out 1.5s;
+}
+.banner__quote{
+  font-size: 70px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: -2px;
+  text-align: center;
+}
+.banner__author{
+  font-style: italic;
+  text-align: right;
+  color:white;
+}
