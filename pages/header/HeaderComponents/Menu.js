@@ -4,7 +4,7 @@ const Menu = ({ menuItems, showMenu }) => {
   return (
     <ul className={`menu menu${showMenu ? "--active" : "--inactive"}`}>
       {menuItems
-        ? menuItems.menus.edges[0].node.menuItems.edges.map(function (item, i) {
+        ? menuItems[0].node.menuItems.edges.map(function (item, i) {
             return (
               <li key={i} className="menu__element">
                 <a

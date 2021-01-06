@@ -19,7 +19,6 @@ export default function Home({ allPosts: { edges } }) {
           <a>blog articles page</a>
         </Link>
       </main>
-      <section>{edges.map(({ node }) => console.log(node))}</section>
 
       <footer className={styles.footer}></footer>
     </div>
