@@ -1,23 +1,21 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import Banner from "./home/HomeComponents/Banner/Banner";
+import Logos from "./home/HomeComponents/Logos/Logos";
 import Header from "./header";
 import { getMenu } from "../lib/api";
 
-export default function Home({ allPosts: { edges } }) {
+export default function Home({ allPosts }) {
   return (
     <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header menu={edges} />
+      <Header menu={allPosts[0]} />
       <main>
         <Banner />
-        <Link href="/blog">
-          <a>blog articles page</a>
-        </Link>
+        <Logos logos={allPosts[1]} />
       </main>
 
       <footer className={styles.footer}></footer>
@@ -26,6 +24,7 @@ export default function Home({ allPosts: { edges } }) {
 }
 export async function getServerSideProps() {
   const allPosts = await getMenu();
+
   return {
     props: {
       allPosts,
