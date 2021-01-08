@@ -8,9 +8,10 @@ import { getMenu } from "../lib/api";
 export default function Home({ allPosts }) {
   return (
     <div>
+      {console.log(allPosts)}
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Youngmedia</title>
+        <link rel="icon" href="/logo_fav.png" />
       </Head>
       <Header menu={allPosts[0]} />
       <main>
