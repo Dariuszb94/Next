@@ -5,18 +5,17 @@ import Logos from "./home/HomeComponents/Logos/Logos";
 import Header from "./header";
 import { getMenu } from "../lib/api";
 
-export default function Home({ allPosts }) {
+export default function Home({ allPosts: { menus, logos } }) {
   return (
     <div>
-      {console.log(allPosts)}
       <Head>
         <title>Youngmedia</title>
         <link rel="icon" href="/logo_fav.png" />
       </Head>
-      <Header menu={allPosts[0]} />
+      <Header menu={menus} />
       <main>
         <Banner />
-        <Logos logos={allPosts[1]} />
+        <Logos logos={logos} />
       </main>
 
       <footer className={styles.footer}></footer>
