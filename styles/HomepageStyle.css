@@ -24,6 +24,7 @@ width:100%;
     font-style: italic;
     text-align: right;
     color:white;
+
   }
 .separator{
   height: 80px;
@@ -35,7 +36,7 @@ width:100%;
     list-style-type: none;
 
   }
-  .logos-section, .offers-section {
+  .logos-section, .offers-section,.testimonials-section {
     max-width: 1200px;
     margin:0 auto;
     margin-top:80px;
@@ -47,7 +48,7 @@ width:100%;
     animation:resize ease-in-out 1s;
   }
   
-  .logos__header{
+  .logos__header,.testimonials__header{
     font-size:24px;
   }
 
@@ -65,6 +66,47 @@ width:100%;
     font-weight: 400;
     font-family: 'Raleway', sans-serif;
   }
+  .testimonials-list{
+list-style:none;
+padding: 0;
+max-width: 600px;
+margin:0 auto;
+
+  }
+  .testimonial__content{
+    text-align: center;
+    animation: right-slide 1s ease-in-out ;
+  }
+  .toggle__dot--active{
+    height: 20px;
+    width: 20px;
+    background: #ED184A;
+    border-radius: 50%;
+    border: 2px solid #ED184A;
+    cursor: pointer;
+    margin:0 20px;
+    box-shadow: 0 0 0.5em #ED184A;
+    transition: background-color 0.5s ease;
+  }
+  .toggle__dot--inactive{
+    height: 20px;
+    cursor: pointer;
+    width: 20px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #ED184A;
+    margin:0 20px;
+    box-shadow: 0 0 0.5em #ED184A;
+    transition: background-color 0.5s ease;
+  }
+.testimonials-toggle{
+  display: flex;
+  justify-content: center;
+}
+.testimonial__author{
+  text-align: right;
+  animation: up-slide 1s ease-in-out ;
+}
   @media (max-width: 1200px) {
     .offer__title{
       line-height: 1.3;
@@ -82,7 +124,7 @@ width:100%;
       font-size: 40px;
   
     }
-    .logos__header{
+    .logos__header, .testimonials__header{
       font-size:20px;
     }
     .banner{
@@ -110,5 +152,27 @@ width:100%;
     100% {
       transform: scale(1);
 
+    }
+  }
+  @keyframes  right-slide {
+    0% {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+   
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes  up-slide {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+   
+    100% {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
