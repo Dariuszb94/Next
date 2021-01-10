@@ -5,20 +5,21 @@
   .header{
     z-index: 2;
     background: white;
-    width: 100vw;
+    width: calc(100% - 16px);
     height: 80px;
     position: fixed;
     left: 0;
     top:0;
+    padding: 0 8px;
   }
   .header__content{
     display: flex;
     justify-content: space-between;
   margin:0 auto;
     max-width: 1200px;
-    width: 100%;
     align-items: center;
     height: 80px;
+    padding: 0 8px;
   }
   .menu{
     display: flex;
