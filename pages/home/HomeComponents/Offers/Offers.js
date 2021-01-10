@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 
 const Offers = ({ offers }) => {
   const [isMobile, changeIsMobile] = useState(false);
+  const [animate, animateChange] = useState(false);
 
   useEffect(() => {
     window.addEventListener("resize", listenForResize);
+    window.addEventListener("scroll", listenForScroll);
     listenForResize();
     return function cleanup() {
       window.removeEventListener("resize", listenForResize);
+      window.removeEventListener("scroll", listenForScroll);
     };
   });
 
@@ -18,7 +21,14 @@ const Offers = ({ offers }) => {
       changeIsMobile(false);
     }
   };
-
+  const listenForScroll = () => {
+    const toAnimate = document.querySelector(".offer");
+    let offerTop = toAnimate.getClientRects()[0].top;
+    let offersHeight = toAnimate.getClientRects()[0].height;
+    let height = window.innerHeight;
+    if (offerTop < height && offerTop > 0) animateChange(true);
+    else animateChange(false);
+  };
   useEffect(() => {
     if (document.querySelector(".offer")) {
       if (!isMobile)
@@ -39,7 +49,10 @@ const Offers = ({ offers }) => {
         {offers
           ? offers.edges.map(function (item, i) {
               return (
-                <li key={i} className="offer">
+                <li
+                  key={i}
+                  className={`offer offer${animate ? "--animate" : null}`}
+                >
                   <div className="offer__img-container">
                     <img
                       className="offer__img"
