@@ -45,7 +45,6 @@ width:100%;
 
   .logo__img{
     max-width: 80%;
-    animation:resize ease-in-out 1s;
   }
   
   .logos__header,.testimonials__header{
@@ -114,6 +113,12 @@ margin:0 auto;
     }
   }
   @media (max-width: 1000px) {
+    .testimonial__author{
+      animation: up-slide-mobile 1s ease-in-out ;
+    }
+    .testimonial__content{
+      animation: right-slide-mobile 1s ease-in-out ;
+    }
     .offer{
       margin-bottom:40px;
     }
@@ -126,6 +131,7 @@ margin:0 auto;
     }
     .logos__header, .testimonials__header{
       font-size:20px;
+      margin-bottom:40px
     }
     .banner{
       background-size: cover;
@@ -145,15 +151,7 @@ margin:0 auto;
 
     }
   }
-  @keyframes resize {
-    0% {
-      transform: scale(0.2);
-    }
-    100% {
-      transform: scale(1);
-
-    }
-  }
+ 
   @keyframes  right-slide {
     0% {
       transform: translateX(200px);
@@ -168,6 +166,28 @@ margin:0 auto;
   @keyframes  up-slide {
     0% {
       transform: translateY(50px);
+      opacity: 0;
+    }
+   
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes  right-slide-mobile {
+    0% {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+   
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes  up-slide-mobile {
+    0% {
+      transform: translateY(40px);
       opacity: 0;
     }
    
