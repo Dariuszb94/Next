@@ -4,6 +4,8 @@ import Banner from "./home/HomeComponents/Banner/Banner";
 import Logos from "./home/HomeComponents/Logos/Logos";
 import Offers from "./home/HomeComponents/Offers/Offers";
 import Header from "./header";
+import Footer from "./footer";
+
 import { getMenu } from "../lib/api";
 import Testimonials from "./home/HomeComponents/Testimonials/Testimonials";
 
@@ -24,7 +26,7 @@ export default function Home({
         <Testimonials testimonials={testimonials} />
       </main>
 
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 }
