@@ -3,7 +3,20 @@ import Menu from "./HeaderComponents/Menu";
 import { getMenu } from "../../lib/api";
 import BurgerOpen from "@material-ui/icons/Menu";
 import BurgerClose from "@material-ui/icons/Close";
+
+// import { gql, useMutation } from "@apollo/client";
 const Header = ({ menu }) => {
+  // const TOGGLE_TODO = gql`
+  //   mutation toggleTodo($id: Int!, $isCompleted: Boolean!) {
+  //     update_todos(
+  //       where: { id: { _eq: $id } }
+  //       _set: { is_completed: $isCompleted }
+  //     ) {
+  //       affected_rows
+  //     }
+  //   }
+  // `;
+  //const [toggleTodoMutation] = useMutation(TOGGLE_TODO);
   const [showMenu, showMenuChange] = useState(false);
   return (
     <section className="header">
