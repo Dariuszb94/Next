@@ -5,7 +5,7 @@ const ADD_TODO = gql`
     __typename
     sendEmail(
       input: {
-        body: "aaaaa"
+        body: "asadsa"
         from: "db@youngmedia.pl"
         subject: "AAAAA"
         to: "greedo904@gmail.com"
@@ -23,22 +23,5 @@ export default function AddTodo() {
   useEffect(() => {
     addTodo("dupa");
   }, []);
-  return (
-    <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addTodo({ variables: { type: input.value } });
-          input.value = "";
-        }}
-      >
-        <input
-          ref={(node) => {
-            input = node;
-          }}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-    </div>
-  );
+  return <div></div>;
 }
