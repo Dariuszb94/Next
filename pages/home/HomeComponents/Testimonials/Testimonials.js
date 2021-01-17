@@ -12,7 +12,7 @@ const Testimonials = ({ testimonials }) => {
               if (i === currentTestimonial)
                 return (
                   <li key={i} className="testimonial">
-                    {console.log(item)}
+            
                     <p className="testimonial__content">
                       {'"' + item.node.quote.cytat + '"'}
                     </p>

@@ -14,31 +14,13 @@ import {
   useQuery,
   gql,
 } from "@apollo/client";
+
 import Test from "./Test";
 const client = new ApolloClient({
   uri: "https://wp.na.stronazen.pl/graphql",
   cache: new InMemoryCache(),
 });
-client.query({
-  query: gql`
-    query GetExchangeRates {
-      menus(where: { id: 2 }) {
-        edges {
-          node {
-            menuItems {
-              edges {
-                node {
-                  label
-                  path
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `,
-});
+
 export default function Home({
   allPosts: { menus, logos, offers, testimonials },
 }) {
