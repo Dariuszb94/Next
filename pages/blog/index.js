@@ -1,28 +1,51 @@
 import Head from "next/head";
-import Link from "next/link";
-
-// data
 import { getMenu } from "../../lib/api";
+import React, { useEffect, useState } from "react";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+  useMutation,
+} from "@apollo/client";
 
-// styles
-
-const Blog = ({ allPosts: { edges } }) => (
-  <div>
-    <Head>
-      <title>Blog articles page</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <main>
-      <h1>Latest blog articles</h1>
-      <hr />
-      <section>{edges.map(({ node }) => console.log(node))}</section>
-    </main>
-  </div>
-);
-export default Blog;
+export const client = new ApolloClient({
+  uri: "https://wp.na.stronazen.pl/graphql",
+  cache: new InMemoryCache(),
+});
+const UPDATE_TODO = gql`
+  mutation MyMutation {
+    __typename
+    sendEmail(
+      input: {
+        body: "aaassdfsdfaa"
+        from: "db@youngmedia.pl"
+        subject: "AAAAA"
+        to: "greedo904@gmail.com"
+      }
+    ) {
+      message
+      origin
+    }
+  }
+`;
+export default function Home({
+  allPosts: { menus, logos, offers, testimonials },
+}) {
+  const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
+  useEffect(() => {
+    updateTodo("dupa");
+  }, []);
+  return (
+    <ApolloProvider client={client}>
+      <div>ss</div>
+    </ApolloProvider>
+  );
+}
 export async function getServerSideProps() {
   const allPosts = await getMenu();
+
   return {
     props: {
       allPosts,
