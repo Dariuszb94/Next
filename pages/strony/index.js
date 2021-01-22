@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { getMenu } from "../../lib/api";
 import React, { useEffect, useState } from "react";
+import Header from "../header/index";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
   gql,
   useMutation,
 } from "@apollo/client";
@@ -34,12 +34,14 @@ export default function Home({
   allPosts: { menus, logos, offers, testimonials },
 }) {
   const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
-  useEffect(() => {
-    updateTodo("dupa");
-  }, []);
+
   return (
     <ApolloProvider client={client}>
-      <div>ss</div>
+      <Head>
+        <title>Youngmedia - Strony Internetowe</title>
+        <link rel="icon" href="/logo_fav.png" />
+      </Head>
+      <Header menu={menus} />
     </ApolloProvider>
   );
 }
