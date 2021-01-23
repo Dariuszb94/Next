@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
 const Offers = ({ offers }) => {
   const [isMobile, changeIsMobile] = useState(false);
   const [animate, animateChange] = useState(false);
@@ -22,12 +22,14 @@ const Offers = ({ offers }) => {
     }
   };
   const listenForScroll = () => {
-    const toAnimate = document.querySelector(".offer");
-    let offerTop = toAnimate.getClientRects()[0].top;
-    let offersHeight = toAnimate.getClientRects()[0].height;
-    let height = window.innerHeight;
-    if (offerTop < height && offerTop > 0) animateChange(true);
-    else animateChange(false);
+    if (document.querySelector(".offer")) {
+      const toAnimate = document.querySelector(".offer");
+      let offerTop = toAnimate.getClientRects()[0].top;
+      let offersHeight = toAnimate.getClientRects()[0].height;
+      let height = window.innerHeight;
+      if (offerTop < height && offerTop > 0) animateChange(true);
+      else animateChange(false);
+    }
   };
   useEffect(() => {
     if (document.querySelector(".offer")) {
@@ -53,13 +55,17 @@ const Offers = ({ offers }) => {
                   key={i}
                   className={`offer offer${animate ? "--animate" : null}`}
                 >
-                  <div className="offer__img-container">
-                    <img
-                      className="offer__img"
-                      src={item.node.featuredImage.node.sourceUrl}
-                    />
-                  </div>
-                  <h2 className="offer__title">{item.node.title}</h2>
+                  <Link href={item.node.slug} className="offer-link">
+                    <a>
+                      <div className="offer__img-container">
+                        <img
+                          className="offer__img"
+                          src={item.node.featuredImage.node.sourceUrl}
+                        />
+                      </div>
+                      <h2 className="offer__title">{item.node.title}</h2>
+                    </a>
+                  </Link>
                 </li>
               );
             })

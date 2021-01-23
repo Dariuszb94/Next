@@ -58,7 +58,6 @@ export default function Home({
           <Logos logos={logos} />
           <Testimonials testimonials={testimonials} />
         </main>
-        {/* <Test /> */}
 
         <Footer />
       </div>

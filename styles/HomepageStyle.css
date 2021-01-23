@@ -66,6 +66,9 @@ width:100%;
     font-weight: 400;
     font-family: 'Raleway', sans-serif;
   }
+  .offer-link{
+    cursor: pointer;
+  }
   .testimonials-list{
 list-style:none;
 padding: 0;
