@@ -41,9 +41,7 @@ export default function Home({
   allPosts: { menus, logos, offers, testimonials },
 }) {
   const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
-  useEffect(() => {
-    updateTodo("dupa");
-  }, []);
+
   return (
     <ApolloProvider client={client}>
       <div>
