@@ -53,6 +53,7 @@ export default function StronyInternetowe({
           <input onChange={(e) => subjectSet(e.target.value)} />
           <button type="submit">Add Todo</button>
         </form>
+        r
       </main>
     </ApolloProvider>
   );
