@@ -46,38 +46,41 @@ export default function StronyInternetowe({
       <Header menu={menus} />
       <main>
         <hr className="separator" />
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            updateTodo({ variables: { input: input } });
-          }}
-        >
-          <input
-            onChange={(e) => contactSet(e.target.value)}
-            className={`form__input${!contact && invalid ? "--invalid" : ""}`}
-            placeholder="Email lub telefon"
-          />
-          <textarea
-            onChange={(e) => subjectSet(e.target.value)}
-            className={`form__textarea${
-              !subject && invalid ? "--invalid" : ""
-            }`}
-            placeholder="Wiadomość"
-          />
-          <button
-            type="submit"
-            className={`form__submit--${
-              contact && subject ? "active" : "inactive"
-            }`}
-            onClick={() => {
-              contact && subject
-                ? (e) => subjectSet(e.target.value)
-                : invalidSet(true);
+        <div className="form-container">
+          <form
+            className="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              updateTodo({ variables: { input: input } });
             }}
           >
-            Wyślij
-          </button>
-        </form>
+            <input
+              onChange={(e) => contactSet(e.target.value)}
+              className={`form__input${!contact && invalid ? "--invalid" : ""}`}
+              placeholder="Email lub telefon"
+            />
+            <textarea
+              onChange={(e) => subjectSet(e.target.value)}
+              className={`form__textarea${
+                !subject && invalid ? "--invalid" : ""
+              }`}
+              placeholder="Wiadomość"
+            />
+            <button
+              type="submit"
+              className={`form__submit--${
+                contact && subject ? "active" : "inactive"
+              }`}
+              onClick={() => {
+                contact && subject
+                  ? (e) => subjectSet(e.target.value)
+                  : invalidSet(true);
+              }}
+            >
+              Wyślij
+            </button>
+          </form>
+        </div>
       </main>
     </ApolloProvider>
   );
