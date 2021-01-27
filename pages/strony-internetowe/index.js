@@ -2,6 +2,8 @@ import Head from "next/head";
 import { getMenu } from "../../lib/api";
 import React, { useEffect, useState } from "react";
 import Header from "../header/index";
+import Footer from "../footer/index";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -104,6 +106,7 @@ export default function StronyInternetowe({
           </form>
         </div>
       </main>
+      <Footer />
     </ApolloProvider>
   );
 }

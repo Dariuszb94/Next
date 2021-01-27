@@ -123,6 +123,7 @@ padding:80px 24px;
     .strony-banner__title{
       color:white;
       font-size:72px;
+      text-align: center;
     }
     @media (max-width: 1000px) {
       .strony-banner__title{

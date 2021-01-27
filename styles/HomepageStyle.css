@@ -38,8 +38,7 @@ width:100%;
   }
   .logos-section, .offers-section,.testimonials-section {
     max-width: 1200px;
-    margin:0 auto;
-    margin-top:80px;
+    margin:80px auto;
     padding: 0 8px;
   }
 
