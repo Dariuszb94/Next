@@ -46,7 +46,29 @@ export default function StronyInternetowe({
       <Header menu={menus} />
       <main>
         <hr className="separator" />
+        <div className="strony-banner">
+          <h1 className="strony-banner__title">Strony internetowe</h1>
+        </div>
         <div className="form-container">
+          <div className="form-text">
+            <p>
+              Tworzymy zaawansowane serwisy www, oparte na naszym własnym
+              Systemie Zarządzania Treścią (CMS). Kładziemy nacisk na estetykę,
+              funkcjonalność, niezawodność i przede wszystkim użyteczność.
+              Stosując się do nowych trendów nasze strony przygotowujemy z myślą
+              o urządzeniach mobilnych, wykorzystując technikę Responsive Web
+              Design (RWD). Powstałe w ten sposób strony mobilne bardzo dobrze
+              wyświetlają się na ekranie komputera, tabletach jak również
+              smartfonach. Niektórzy z Was - drodzy Klienci - będą narzekali, że
+              zadajemy strasznie dużo pytań, ale ta mnogość pytań ma na celu
+              poznanie Waszych potrzeb. Ich wnikliwa analiza służy temu, byście
+              nie wybrali się na leśne zabłocone bezdroża szykownym kabrioletem,
+              albo na tor wyścigowy wojskowym łazikiem. Nasze doświadczenie
+              pozwala nam dużo wcześniej widzieć potencjalne problemy, dzięki
+              czemu możemy je eliminować zanim zrobi się naprawdę gorąco...
+            </p>
+            <p>Napisz do nas już dziś!</p>
+          </div>
           <form
             className="form"
             onSubmit={(e) => {

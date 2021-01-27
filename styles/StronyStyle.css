@@ -75,8 +75,9 @@ color:white;
     margin:0 auto;
 }
 .form-container{
-padding:80px 0;
+padding:80px 24px;
     background-color:#ECEFF1;
+    
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-family: 'Roboto', sans-serif;
@@ -94,3 +95,42 @@ padding:80px 0;
     font-family: 'Roboto', sans-serif;
     font-size:12px;
   }
+  .form-text{
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  .form-text p{
+ text-align:center;
+  }
+  .strony-banner{
+    height: calc(40vh);
+    background:linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url("/telefon.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation:banner-rollout ease-in-out 1.5s;
+    background-size: cover;
+
+  filter: drop-shadow(2px 4px 6px black);
+  padding: 0 24px;
+    }
+    .strony-banner__title{
+      color:white;
+      font-size:72px;
+    }
+    @media (max-width: 1000px) {
+      .strony-banner__title{
+        color:white;
+        font-size:40px;
+      }
+      .form-container{
+        padding:40px 24px;
+        }
+   
+    }
