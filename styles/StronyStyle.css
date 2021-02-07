@@ -37,6 +37,7 @@
   border: none;
   padding: 8px;
   outline: none;
+  animation: appear-from-down 3s ease-in-out;
 }
 .form__textarea {
   border-radius: 4px;
@@ -47,6 +48,7 @@
   max-width: 300px;
   padding: 8px;
   outline: none;
+  animation: appear-from-up 3s ease-in-out;
 }
 .form__input--invalid {
   border-radius: 4px;
@@ -70,7 +72,7 @@
   max-width: 300px;
 }
 .form-container {
-  padding: 80px 24px;
+  padding: 80px 0;
 }
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -94,13 +96,14 @@
 }
 .form-text {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 800px;
+  padding:0 24px;
 }
 .form-text p {
-  text-align: center;
+  text-align: justify;
 }
 .strony-banner {
-  height: calc(40vh);
+  height: calc(35vh);
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     /* bottom, image */ url("/telefon.jpg");
   display: flex;
@@ -127,6 +130,7 @@
   justify-self: end;
   padding-right: 40px;
   font-size: 42px;
+  animation: slide-left 2s ease-in-out;
 }
 .form-main {
   justify-self: start;
@@ -135,13 +139,75 @@
   display: flex;
   padding: 60px;
   border-radius: 4px;
+  animation: slide-right 2s ease-in-out;
+  box-sizing: border-box;
 }
 @media (max-width: 1000px) {
+  .strony-banner {
+    height: calc(30vh);
+ 
+  }
+  .form-main {
+    padding: 40px;
+
+  }
+  .form-header {
+ margin: 40px 0;
+  }
+  .form-main {
+    justify-content: center;
+}
+  .form-main-container {
+    display: flex;
+    flex-direction: column;
+}
   .strony-banner__title {
     color: white;
     font-size: 40px;
   }
   .form-container {
-    padding: 40px 24px;
+    padding: 40px 0;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes appear-from-down {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes appear-from-up {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
