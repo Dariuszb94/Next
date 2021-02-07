@@ -22,7 +22,7 @@ const Header = ({ menu }) => {
     <section className="header">
       {menu ? (
         <div className="header__content">
-          <a href="/Youngmedia">
+          <a href="/">
             <img className="header__logo" src="/logo_front.png" alt="ym" />
           </a>
           <Menu menuItems={menu} showMenu={showMenu} />

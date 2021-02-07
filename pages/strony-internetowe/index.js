@@ -69,41 +69,47 @@ export default function StronyInternetowe({
               pozwala nam dużo wcześniej widzieć potencjalne problemy, dzięki
               czemu możemy je eliminować zanim zrobi się naprawdę gorąco...
             </p>
-            <p>Napisz do nas już dziś!</p>
           </div>
-          <form
-            className="form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              updateTodo({ variables: { input: input } });
-            }}
-          >
-            <input
-              onChange={(e) => contactSet(e.target.value)}
-              className={`form__input${!contact && invalid ? "--invalid" : ""}`}
-              placeholder="Email lub telefon"
-            />
-            <textarea
-              onChange={(e) => subjectSet(e.target.value)}
-              className={`form__textarea${
-                !subject && invalid ? "--invalid" : ""
-              }`}
-              placeholder="Wiadomość"
-            />
-            <button
-              type="submit"
-              className={`form__submit--${
-                contact && subject ? "active" : "inactive"
-              }`}
-              onClick={() => {
-                contact && subject
-                  ? (e) => subjectSet(e.target.value)
-                  : invalidSet(true);
-              }}
-            >
-              Wyślij
-            </button>
-          </form>
+          <div className="form-main-container">
+            <div className="form-header">Napisz do nas!</div>
+            <div className="form-main">
+              <form
+                className="form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  updateTodo({ variables: { input: input } });
+                }}
+              >
+                <input
+                  onChange={(e) => contactSet(e.target.value)}
+                  className={`form__input${
+                    !contact && invalid ? "--invalid" : ""
+                  }`}
+                  placeholder="Email lub telefon"
+                />
+                <textarea
+                  onChange={(e) => subjectSet(e.target.value)}
+                  className={`form__textarea${
+                    !subject && invalid ? "--invalid" : ""
+                  }`}
+                  placeholder="Wiadomość"
+                />
+                <button
+                  type="submit"
+                  className={`form__submit--${
+                    contact && subject ? "active" : "inactive"
+                  }`}
+                  onClick={() => {
+                    contact && subject
+                      ? (e) => subjectSet(e.target.value)
+                      : invalidSet(true);
+                  }}
+                >
+                  Wyślij
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
