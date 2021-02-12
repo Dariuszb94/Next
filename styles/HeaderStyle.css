@@ -24,7 +24,7 @@
   .menu{
     display: flex;
     list-style-type: none;
-    animation: right-slide 2s ease-in-out ;
+    animation: right-slide-menu 2s ease-in-out ;
   }
   .menu__element{
   margin-left:20px ;
@@ -107,7 +107,7 @@
     }
   
   }
-  @keyframes  right-slide {
+  @keyframes  right-slide-menu {
     0% {
       transform: translateX(200px) rotate(0);
       opacity: 0;
