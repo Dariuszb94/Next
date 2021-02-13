@@ -27,46 +27,48 @@ export default function StronyInternetowe({
   allPosts: { menus, logos, offers, testimonials },
 }) {
   const [subject, subjectSet] = useState("");
+  const [name, nameSet] = useState("");
   const [contact, contactSet] = useState("");
   const [invalid, invalidSet] = useState(false);
   const [sentSuccess, sentSuccessSet] = useState(false);
+
   const [updateTodo, { data }] = useMutation(UPDATE_TODO, {
     client: client,
     onCompleted(data) {
       sentSuccessSet(data.sendEmail.sent);
     },
   });
-  <span className="form__success">{sentSuccess ? "Wysłano!" : null}</span>;
   let input = {
-    body: contact + ":" + subject,
+    body:
+      "Imię i nazwisko :" +
+      name +
+      "<br />" +
+      "kontakt: " +
+      contact +
+      "<br/>" +
+      subject,
     from: "db@youngmedia.pl",
-    subject: "Strony Internetowe",
+    subject: "Strony internetowe",
     to: "greedo904@gmail.com",
   };
 
   return (
     <ApolloProvider client={client}>
       <Head>
-        <title>Youngmedia - Strony Internetowe</title>
+        <title>Youngmedia - Kontakt</title>
         <link rel="icon" href="/logo_fav.png" />
       </Head>
       <Header menu={menus} />
       <main>
         <hr className="separator" />
         <div className="strony-banner">
-          <h1 className="strony-banner__title">Strony Internetowe</h1>
+          <h1 className="strony-banner__title">Kontakt</h1>
         </div>
         <div className="form-container">
           <div className="form-text">
             <p>
-              Masz już stworzone logo, wydrukowany papier firmowy i koperty a
-              nawet wizytówkę na wypadek gdyby ktoś chciał namiar na Twoją
-              firmę? Stworzyłeś też stronę internetową, na której
-              zaprezentowałeś się z najlepszej strony oraz zamieściłeś skrzętnie
-              przygotowaną ofertę? Jesteś gotowy aby w końcu zarabiać duże
-              pieniądze, ale… klienci nie przychodzą? Zdecydowanie potrzebna Ci
-              reklama. W telewizji - za drogo. W lokalnej prasie… zbyt lokalnie.
-              Internet - strzał w dziesiątkę - nie za drogo i globalnie.
+              Jeżeli jesteś zainteresowany współpracą lub chciałbyś zapytać o
+              naszą firmę skorzystaj z formularza lub zadzwoń.
             </p>
           </div>
           <div className="form-main-container">
@@ -78,6 +80,13 @@ export default function StronyInternetowe({
                   e.preventDefault();
                 }}
               >
+                <input
+                  onChange={(e) => nameSet(e.target.value)}
+                  className={`form__input form__input${
+                    !name && invalid ? "--invalid" : ""
+                  }`}
+                  placeholder="Imie i nazwisko"
+                />
                 <input
                   onChange={(e) => contactSet(e.target.value)}
                   className={`form__input form__input${
@@ -95,16 +104,17 @@ export default function StronyInternetowe({
                 <button
                   type="submit"
                   className={`form__submit--${
-                    contact && subject ? "active" : "inactive"
+                    contact && subject && name ? "active" : "inactive"
                   }`}
                   onClick={() => {
-                    contact && subject
+                    contact && subject && name
                       ? updateTodo({ variables: { input: input } })
                       : invalidSet(true);
                   }}
                 >
                   Wyślij
                 </button>
+
                 <span className="form__success">
                   {sentSuccess ? "Wysłano!" : null}
                 </span>

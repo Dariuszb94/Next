@@ -19,8 +19,7 @@ export const client = new ApolloClient({
 const UPDATE_TODO = gql`
   mutation MyMutation($input: SendEmailInput!) {
     sendEmail(input: $input) {
-      message
-      origin
+      sent
     }
   }
 `;
@@ -30,8 +29,14 @@ export default function FilmyReklamowe({
   const [subject, subjectSet] = useState("");
   const [contact, contactSet] = useState("");
   const [invalid, invalidSet] = useState(false);
-
-  const [updateTodo, { data }] = useMutation(UPDATE_TODO, { client: client });
+  const [sentSuccess, sentSuccessSet] = useState(false);
+  const [updateTodo, { data }] = useMutation(UPDATE_TODO, {
+    client: client,
+    onCompleted(data) {
+      sentSuccessSet(data.sendEmail.sent);
+    },
+  });
+  <span className="form__success">{sentSuccess ? "Wysłano!" : null}</span>;
   let input = {
     body: contact + ":" + subject,
     from: "db@youngmedia.pl",
@@ -54,12 +59,14 @@ export default function FilmyReklamowe({
         <div className="form-container">
           <div className="form-text">
             <p>
-              Od dawna wiadomo, że przekaz wizualny ma większe znaczenie niż
-              werbalny. Jeśli chcesz dotrzeć do klienta w czysty i przejrzysty
-              sposób zaprezentuj mu coś więcej niż ofertę wydrukowaną na
-              papierze lub przedstawioną za pomocą tekstu na stronie
-              internetowej. W krótkim filmie zaprezentuj siebie i swoje
-              możliwości.
+              Masz już stworzone logo, wydrukowany papier firmowy i koperty a
+              nawet wizytówkę na wypadek gdyby ktoś chciał namiar na Twoją
+              firmę? Stworzyłeś też stronę internetową, na której
+              zaprezentowałeś się z najlepszej strony oraz zamieściłeś skrzętnie
+              przygotowaną ofertę? Jesteś gotowy aby w końcu zarabiać duże
+              pieniądze, ale… klienci nie przychodzą? Zdecydowanie potrzebna Ci
+              reklama. W telewizji - za drogo. W lokalnej prasie… zbyt lokalnie.
+              Internet - strzał w dziesiątkę - nie za drogo i globalnie.
             </p>
           </div>
           <div className="form-main-container">
@@ -69,19 +76,18 @@ export default function FilmyReklamowe({
                 className="form"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  updateTodo({ variables: { input: input } });
                 }}
               >
                 <input
                   onChange={(e) => contactSet(e.target.value)}
-                  className={`form__input${
+                  className={`form__input form__input${
                     !contact && invalid ? "--invalid" : ""
                   }`}
                   placeholder="Email lub telefon"
                 />
                 <textarea
                   onChange={(e) => subjectSet(e.target.value)}
-                  className={`form__textarea${
+                  className={`form__textarea form__textarea${
                     !subject && invalid ? "--invalid" : ""
                   }`}
                   placeholder="Wiadomość"
@@ -93,12 +99,15 @@ export default function FilmyReklamowe({
                   }`}
                   onClick={() => {
                     contact && subject
-                      ? (e) => subjectSet(e.target.value)
+                      ? updateTodo({ variables: { input: input } })
                       : invalidSet(true);
                   }}
                 >
                   Wyślij
                 </button>
+                <span className="form__success">
+                  {sentSuccess ? "Wysłano!" : null}
+                </span>
               </form>
             </div>
           </div>

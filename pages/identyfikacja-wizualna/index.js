@@ -19,37 +19,42 @@ export const client = new ApolloClient({
 const UPDATE_TODO = gql`
   mutation MyMutation($input: SendEmailInput!) {
     sendEmail(input: $input) {
-      message
-      origin
+      sent
     }
   }
 `;
-export default function MarketingReklamowy({
+export default function IdentyfikacjaWizualna({
   allPosts: { menus, logos, offers, testimonials },
 }) {
   const [subject, subjectSet] = useState("");
   const [contact, contactSet] = useState("");
   const [invalid, invalidSet] = useState(false);
-
-  const [updateTodo, { data }] = useMutation(UPDATE_TODO, { client: client });
+  const [sentSuccess, sentSuccessSet] = useState(false);
+  const [updateTodo, { data }] = useMutation(UPDATE_TODO, {
+    client: client,
+    onCompleted(data) {
+      sentSuccessSet(data.sendEmail.sent);
+    },
+  });
+  <span className="form__success">{sentSuccess ? "Wysłano!" : null}</span>;
   let input = {
     body: contact + ":" + subject,
     from: "db@youngmedia.pl",
-    subject: "Marketing Internetowy",
+    subject: "Identyfikacja Wizualna",
     to: "greedo904@gmail.com",
   };
 
   return (
     <ApolloProvider client={client}>
       <Head>
-        <title>Youngmedia - Marketing Internetowy</title>
+        <title>Youngmedia - Identyfikacja Wizualna</title>
         <link rel="icon" href="/logo_fav.png" />
       </Head>
       <Header menu={menus} />
       <main>
         <hr className="separator" />
         <div className="strony-banner">
-          <h1 className="strony-banner__title">Marketing Internetowy</h1>
+          <h1 className="strony-banner__title">Identyfikacja Wizualna</h1>
         </div>
         <div className="form-container">
           <div className="form-text">
@@ -71,19 +76,18 @@ export default function MarketingReklamowy({
                 className="form"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  updateTodo({ variables: { input: input } });
                 }}
               >
                 <input
                   onChange={(e) => contactSet(e.target.value)}
-                  className={`form__input${
+                  className={`form__input form__input${
                     !contact && invalid ? "--invalid" : ""
                   }`}
                   placeholder="Email lub telefon"
                 />
                 <textarea
                   onChange={(e) => subjectSet(e.target.value)}
-                  className={`form__textarea${
+                  className={`form__textarea form__textarea${
                     !subject && invalid ? "--invalid" : ""
                   }`}
                   placeholder="Wiadomość"
@@ -95,12 +99,15 @@ export default function MarketingReklamowy({
                   }`}
                   onClick={() => {
                     contact && subject
-                      ? (e) => subjectSet(e.target.value)
+                      ? updateTodo({ variables: { input: input } })
                       : invalidSet(true);
                   }}
                 >
                   Wyślij
                 </button>
+                <span className="form__success">
+                  {sentSuccess ? "Wysłano!" : null}
+                </span>
               </form>
             </div>
           </div>
