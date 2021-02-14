@@ -3,6 +3,7 @@ import { getMenu } from "../../lib/api";
 import React, { useEffect, useState } from "react";
 import Header from "../header/index";
 import Footer from "../footer/index";
+import Icons from "./kontaktComponents/icons";
 
 import {
   ApolloClient,
@@ -64,7 +65,7 @@ export default function StronyInternetowe({
         <div className="strony-banner">
           <h1 className="strony-banner__title">Kontakt</h1>
         </div>
-        <section className="icons"></section>
+        <Icons />
         <div className="form-container">
           <div className="form-text">
             <p>

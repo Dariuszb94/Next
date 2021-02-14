@@ -1,0 +1,7 @@
+.icons{
+  max-width: 800px;
+  margin: 80px auto;
+}
+svg.icons__icon{
+  font-size: 70px;
+}
