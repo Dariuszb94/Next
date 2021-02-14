@@ -64,6 +64,7 @@ export default function StronyInternetowe({
         <div className="strony-banner">
           <h1 className="strony-banner__title">Kontakt</h1>
         </div>
+        <section className="icons"></section>
         <div className="form-container">
           <div className="form-text">
             <p>
