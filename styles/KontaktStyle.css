@@ -5,3 +5,19 @@
 svg.icons__icon{
   font-size: 70px;
 }
+.icons__flex{
+display: flex;
+justify-content: space-between;
+}
+.icons__icon{
+  margin-bottom: 20px;
+}
+.icons__column{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.icons__text{
+  text-align: center;
+}
