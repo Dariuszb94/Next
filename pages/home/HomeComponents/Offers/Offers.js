@@ -46,7 +46,7 @@ const Offers = ({ offers }) => {
   });
 
   return (
-    <section className="offers-section">
+    <section className="offers-section" id="oferta">
       <ul className="offers-list">
         {offers
           ? offers.edges.map(function (item, i) {
