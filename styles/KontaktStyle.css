@@ -12,6 +12,18 @@ svg.icons__icon {
 .icons__icon {
   margin-bottom: 20px;
 }
+
+.icons__column:nth-child(2):hover .icons__icon {
+  animation: tel 0.5s ease-in-out;
+}
+.icons__column:nth-child(2):hover a, .icons__column:nth-child(1):hover .icons__text {
+  font-weight: bold;
+
+}
+.icons__column:nth-child(1):hover .icons__icon {
+  animation: location 0.5s ease-in-out;
+}
+ 
 .icons__column {
   display: flex;
   flex-direction: column;
@@ -20,4 +32,20 @@ svg.icons__icon {
 }
 .icons__text {
   text-align: center;
+}
+@keyframes tel {
+  50% {
+    transform: translateX(10px) rotate(20deg) translateY(4px);
+  }
+  0%,100% {
+    transform: translateX(0) rotate(0) translateY(0);
+  }
+}
+@keyframes location {
+  50% {
+    transform:  scale(0.8) translateY(20px);
+  }
+  0%,100% {
+    transform: scale(1)  translateY(0);
+  }
 }
