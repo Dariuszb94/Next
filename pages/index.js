@@ -52,7 +52,7 @@ export default function Home({
         <Header menu={menus} />
         <main>
           <Banner />
-          <Offers offers={offers} id="oferta" />
+          <Offers offers={offers} />
           <Logos logos={logos} />
           <Testimonials testimonials={testimonials} />
         </main>

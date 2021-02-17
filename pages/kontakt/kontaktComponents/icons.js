@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Phone from "@material-ui/icons/phone";
+import Phone from "@material-ui/icons/Phone";
 
 export default function Icons() {
   return (
