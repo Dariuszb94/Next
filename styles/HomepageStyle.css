@@ -12,7 +12,10 @@ html {
   align-items: center;
   animation: banner-rollout ease-in-out 1.5s;
 }
-
+.offer__img{
+  width:58px;
+  height: 100%;
+}
 .banner__img {
   width: 100%;
 }
