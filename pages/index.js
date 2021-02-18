@@ -1,10 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Banner from "./home/HomeComponents/Banner/Banner";
-import Logos from "./home/HomeComponents/Logos/Logos";
-import Offers from "./home/HomeComponents/Offers/Offers";
-import Header from "./header";
-import Footer from "./footer";
+
 import { getMenu } from "../lib/api";
 import Testimonials from "./home/HomeComponents/Testimonials/Testimonials";
 import React, { useEffect, useState } from "react";
@@ -16,7 +12,7 @@ import {
   gql,
   useMutation,
 } from "@apollo/client";
-
+import loadable from "@loadable/component";
 export const client = new ApolloClient({
   uri: "https://wp.na.stronazen.pl/graphql",
   cache: new InMemoryCache(),
@@ -75,6 +71,13 @@ const EXCHANGE_RATES = gql`
     }
   }
 `;
+const Banner = loadable(() => import("./home/HomeComponents/Banner/Banner"));
+const Logos = loadable(() => import("./home/HomeComponents/Logos/Logos"));
+
+const Offers = loadable(() => import("./home/HomeComponents/Offers/Offers"));
+const Header = loadable(() => import("./header"));
+
+const Footer = loadable(() => import("./footer"));
 
 export default function Home({ menu: { menus } }) {
   const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
