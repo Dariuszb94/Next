@@ -37,14 +37,53 @@ const UPDATE_TODO = gql`
     }
   }
 `;
-export default function Home({
-  allPosts: { menus, logos, offers, testimonials },
-}) {
-  const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
+const EXCHANGE_RATES = gql`
+  query MyQuery {
+    logos {
+      edges {
+        node {
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+    offers {
+      edges {
+        node {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+    testimonials {
+      edges {
+        node {
+          title
+          quote {
+            cytat
+          }
+        }
+      }
+    }
+  }
+`;
 
+export default function Home({ menu: { menus } }) {
+  const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
+  const { loading, error, data } = useQuery(EXCHANGE_RATES, { client: client });
   return (
     <ApolloProvider client={client}>
       <div>
+        {console.log(data)}
+        {data ? console.log(data.logos[0]) : null}
         <Head>
           <title>Youngmedia</title>
           <link rel="icon" href="/logo_fav.png" />
@@ -52,9 +91,9 @@ export default function Home({
         <Header menu={menus} />
         <main>
           <Banner />
-          <Offers offers={offers} />
-          <Logos logos={logos} />
-          <Testimonials testimonials={testimonials} />
+          <Offers offers={data ? data.offers : null} />
+          <Logos logos={data ? data.logos : null} />
+          <Testimonials testimonials={data ? data.testimonials : null} />
         </main>
 
         <Footer />
@@ -62,12 +101,21 @@ export default function Home({
     </ApolloProvider>
   );
 }
-export async function getServerSideProps() {
-  const allPosts = await getMenu();
+export async function getStaticProps() {
+  const menu = await getMenu();
 
   return {
     props: {
-      allPosts,
+      menu,
     },
   };
 }
+// export async function getServerSideProps() {
+//   const allPosts = await getRest();
+
+//   return {
+//     props: {
+//       allPosts,
+//     },
+//   };
+// }
