@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "push":"git push origin master",
     "start": "next start"
   },
   "dependencies": {

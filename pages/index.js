@@ -62,7 +62,7 @@ export default function Home({
     </ApolloProvider>
   );
 }
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const allPosts = await getMenu();
 
   return {
