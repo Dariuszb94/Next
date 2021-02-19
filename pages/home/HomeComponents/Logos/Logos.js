@@ -46,6 +46,9 @@ const Logos = ({ logos }) => {
                   <img
                     className="logo__img"
                     src={item.node.featuredImage.node.sourceUrl}
+                    alt={item.node.featuredImage.node.title}
+                    width="160"
+                    height="160"
                   />
                 </li>
               );
