@@ -85,7 +85,6 @@ export default function Home({ menu: { menus } }) {
   return (
     <ApolloProvider client={client}>
       <div>
-        {console.log(data)}
         {data ? console.log(data.logos[0]) : null}
         <Head>
           <title>Youngmedia</title>

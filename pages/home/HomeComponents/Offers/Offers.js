@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+
 const Offers = ({ offers }) => {
   const [isMobile, changeIsMobile] = useState(false);
   const [animate, animateChange] = useState(false);
@@ -61,6 +62,9 @@ const Offers = ({ offers }) => {
                         <img
                           className="offer__img"
                           src={item.node.featuredImage.node.sourceUrl}
+                          alt={item.node.slug}
+                          width="58"
+                          height="100%"
                         />
                       </div>
                       <h2 className="offer__title">{item.node.title}</h2>
