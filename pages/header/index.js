@@ -23,7 +23,13 @@ const Header = ({ menu }) => {
       {menu ? (
         <div className="header__content">
           <a href="/">
-            <img className="header__logo" src="/logo_front.png" alt="ym" />
+            <img
+              className="header__logo"
+              src="/logo_front.png"
+              alt="ym-logo"
+              width="116"
+              height="37"
+            />
           </a>
           <Menu menuItems={menu} showMenu={showMenu} />
           {!showMenu ? (

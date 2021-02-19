@@ -41,6 +41,7 @@ const EXCHANGE_RATES = gql`
           featuredImage {
             node {
               sourceUrl
+              title
             }
           }
         }
