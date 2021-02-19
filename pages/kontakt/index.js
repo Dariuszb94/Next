@@ -58,6 +58,10 @@ export default function StronyInternetowe({
       <Head>
         <title>Youngmedia - Kontakt</title>
         <link rel="icon" href="/logo_fav.png" />
+        <meta
+          name="description"
+          content="Youngmedia - Tworzymy zaawansowane serwisy www"
+        ></meta>
       </Head>
       <Header menu={menus} />
       <main>
