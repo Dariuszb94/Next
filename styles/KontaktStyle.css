@@ -9,6 +9,9 @@
   max-width: 800px;
   margin: 40px auto;
   width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: calc(100% - 40px);
 }
 svg.icons__icon {
   font-size: 70px;
@@ -40,6 +43,12 @@ svg.icons__icon {
 .map{
   align-self: center;
   margin: 40px 0;
+  padding-top: 40px;
+  max-width: 800px;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: calc(100% - 40px);
 }
 .icons__column {
   display: flex;
