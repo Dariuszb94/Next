@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../header/index";
 import Footer from "../footer/index";
 import Icons from "./kontaktComponents/icons";
+import Map from "./kontaktComponents/map";
 
 import {
   ApolloClient,
@@ -64,19 +65,13 @@ export default function StronyInternetowe({
         ></meta>
       </Head>
       <Header menu={menus} />
-      <main>
+      <main className="contact">
         <hr className="separator" />
         <div className="strony-banner">
           <h1 className="strony-banner__title">Kontakt</h1>
         </div>
         <Icons />
         <div className="form-container">
-          <div className="form-text">
-            <p>
-              Jeżeli jesteś zainteresowany współpracą lub chciałbyś zapytać o
-              naszą firmę skorzystaj z formularza lub zadzwoń.
-            </p>
-          </div>
           <div className="form-main-container">
             <div className="form-header">Napisz do nas!</div>
             <div className="form-main">
@@ -128,6 +123,7 @@ export default function StronyInternetowe({
             </div>
           </div>
         </div>
+        <Map />
       </main>
       <Footer />
     </ApolloProvider>
