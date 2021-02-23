@@ -3,7 +3,7 @@ import { getMenu } from "../../lib/api";
 import React, { useEffect, useState } from "react";
 import Header from "../header/index";
 import Footer from "../footer/index";
-
+import { useQuery } from "@apollo/client";
 import {
   ApolloClient,
   InMemoryCache,
@@ -16,10 +16,22 @@ export const client = new ApolloClient({
   uri: "https://wp.na.stronazen.pl/graphql",
   cache: new InMemoryCache(),
 });
-const UPDATE_TODO = gql`
-  mutation MyMutation($input: SendEmailInput!) {
-    sendEmail(input: $input) {
-      sent
+const EXCHANGE_RATES = gql`
+  query MyQuery {
+    portfolios {
+      edges {
+        node {
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
+          title
+          url {
+            url
+          }
+        }
+      }
     }
   }
 `;
@@ -31,13 +43,8 @@ export default function Portfolio({
   const [contact, contactSet] = useState("");
   const [invalid, invalidSet] = useState(false);
   const [sentSuccess, sentSuccessSet] = useState(false);
+  const { loading, error, data } = useQuery(EXCHANGE_RATES, { client: client });
 
-  const [updateTodo, { data }] = useMutation(UPDATE_TODO, {
-    client: client,
-    onCompleted(data) {
-      sentSuccessSet(data.sendEmail.sent);
-    },
-  });
   let input = {
     body:
       "Imię i nazwisko :" +
@@ -68,8 +75,32 @@ export default function Portfolio({
         <div className="portfolio-banner">
           <h1 className="strony-banner__title">Portfolio</h1>
         </div>
-        <section className="portfolio-grid"></section>
+        <section className="portfolio-grid-container">
+          <ul className="portfolio-grid">
+            {data
+              ? data.portfolios.edges.map((answer, i) => {
+                  return (
+                    <li className="portfolio-grid__element">
+                      <a
+                        className="portfolio-grid__link"
+                        href={answer.node.url.url}
+                      >
+                        <img
+                          className="portfolio-grid__img"
+                          src={answer.node.featuredImage.node.sourceUrl}
+                        />
+                        <div className="portfolio-grid__title">
+                          {answer.node.title}
+                        </div>
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
+          </ul>
+        </section>
       </main>
+
       <Footer />
     </ApolloProvider>
   );

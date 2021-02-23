@@ -113,12 +113,3 @@ export async function getStaticProps() {
     },
   };
 }
-// export async function getServerSideProps() {
-//   const allPosts = await getRest();
-
-//   return {
-//     props: {
-//       allPosts,
-//     },
-//   };
-// }

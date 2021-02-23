@@ -12,3 +12,43 @@
   filter: drop-shadow(2px 4px 6px black);
   padding: 0 24px;
 }
+.portfolio-grid-container{
+  align-self: center;
+  margin: 40px 0;
+  padding-top: 40px;
+  max-width: 1200px;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: calc(100% - 40px);
+} 
+.portfolio-grid__img{
+  width:100%;
+}
+.portfolio-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap:40px
+}
+.portfolio-grid__element{
+  position: relative;
+}
+.portfolio-grid__title{
+  position: absolute;
+  font-size: 20px;
+  color:white;
+}
+.portfolio-grid__link{
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 1000px) {
+  .portfolio-grid{
+    display:flex;
+    flex-direction: column;
+  }
+  .portfolio-grid__element{
+    margin-bottom:40px;
+  }
+}
