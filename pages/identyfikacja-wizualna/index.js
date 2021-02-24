@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { getMenu } from "../../lib/api";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../header/index";
 import Footer from "../footer/index";
 
@@ -23,14 +23,12 @@ const UPDATE_TODO = gql`
     }
   }
 `;
-export default function IdentyfikacjaWizualna({
-  allPosts: { menus, logos, offers, testimonials },
-}) {
+export default function IdentyfikacjaWizualna({ allPosts: { menus } }) {
   const [subject, subjectSet] = useState("");
   const [contact, contactSet] = useState("");
   const [invalid, invalidSet] = useState(false);
   const [sentSuccess, sentSuccessSet] = useState(false);
-  const [updateTodo, { data }] = useMutation(UPDATE_TODO, {
+  const [updateTodo] = useMutation(UPDATE_TODO, {
     client: client,
     onCompleted(data) {
       sentSuccessSet(data.sendEmail.sent);

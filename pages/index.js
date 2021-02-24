@@ -1,39 +1,22 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 
 import { getMenu } from "../lib/api";
 import Testimonials from "./home/HomeComponents/Testimonials/Testimonials";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   useQuery,
   gql,
-  useMutation,
 } from "@apollo/client";
 import loadable from "@loadable/component";
 export const client = new ApolloClient({
   uri: "https://wp.na.stronazen.pl/graphql",
   cache: new InMemoryCache(),
 });
-const UPDATE_TODO = gql`
-  mutation MyMutation {
-    __typename
-    sendEmail(
-      input: {
-        body: "aaassdfsdfaa"
-        from: "db@youngmedia.pl"
-        subject: "AAAAA"
-        to: "greedo904@gmail.com"
-      }
-    ) {
-      message
-      origin
-    }
-  }
-`;
-const EXCHANGE_RATES = gql`
+
+const QUERY = gql`
   query MyQuery {
     logos {
       edges {
@@ -81,8 +64,7 @@ const Header = loadable(() => import("./header"));
 const Footer = loadable(() => import("./footer"));
 
 export default function Home({ menu: { menus } }) {
-  const [updateTodo] = useMutation(UPDATE_TODO, { client: client });
-  const { loading, error, data } = useQuery(EXCHANGE_RATES, { client: client });
+  const { data } = useQuery(QUERY, { client: client });
   return (
     <ApolloProvider client={client}>
       <div>
