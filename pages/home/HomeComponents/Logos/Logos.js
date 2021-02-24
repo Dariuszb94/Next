@@ -43,7 +43,6 @@ const Logos = ({ logos }) => {
           ? logos.edges.map(function (item, i) {
               return (
                 <li key={i} className="logo">
-                  {console.log(item.node)}
                   <img
                     className="logo__img"
                     src={item.node.featuredImage.node.sourceUrl}

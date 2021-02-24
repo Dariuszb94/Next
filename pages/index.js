@@ -68,7 +68,6 @@ export default function Home({ menu: { menus } }) {
   return (
     <ApolloProvider client={client}>
       <div>
-        {data ? console.log(data.logos[0]) : null}
         <Head>
           <title>Youngmedia</title>
           <link rel="icon" href="/logo_fav.png" />
