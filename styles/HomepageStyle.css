@@ -158,54 +158,6 @@ html {
 .offer--animate:nth-last-child(3) {
   animation: rollout-third-last 1s ease-in-out;
 }
-
-@media (max-width: 1200px) {
-  .offer__title {
-    line-height: 1.3;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .testimonial__author {
-    animation: up-slide-mobile 1s ease-in-out;
-  }
-
-  .testimonial__content {
-    animation: right-slide-mobile 1s ease-in-out;
-  }
-
-  .offer {
-    margin-bottom: 40px;
-  }
-
-  .logos-section {
-    padding: 0 20px;
-  }
-
-  .banner__quote {
-    font-size: 40px;
-
-  }
-
-  .logos__header,
-  .testimonials__header {
-    font-size: 20px;
-  }
-
-  .banner {
-    background-size: cover;
-    background-position: center center;
-  }
-
-  .logo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 @keyframes banner-rollout {
   0% {
     max-height: 0;
@@ -330,3 +282,118 @@ html {
     transform: translateX(0);
   }
 }
+@media (max-width: 1200px) {
+  .offer__title {
+    line-height: 1.3;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+
+
+
+  @keyframes rollout-first {
+    0% {
+      transform: translateY(100%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rollout-last {
+    0% {
+      transform: translateY(-100%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rollout-second {
+    0% {
+      transform: translateY(70%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rollout-second-last {
+    0% {
+      transform: translateY(-70%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rollout-third {
+    0% {
+      transform: translateY(20%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rollout-third-last {
+    0% {
+      transform: translateY(-20%);
+  
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .testimonial__author {
+    animation: up-slide-mobile 1s ease-in-out;
+  }
+
+  .testimonial__content {
+    animation: right-slide-mobile 1s ease-in-out;
+  }
+
+  .offer {
+    margin-bottom: 40px;
+  }
+
+  .logos-section {
+    padding: 0 20px;
+  }
+
+  .banner__quote {
+    font-size: 40px;
+
+  }
+
+  .logos__header,
+  .testimonials__header {
+    font-size: 20px;
+  }
+
+  .banner {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
