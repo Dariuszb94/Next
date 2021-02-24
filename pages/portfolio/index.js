@@ -85,6 +85,7 @@ export default function Portfolio({
                         className="portfolio-grid__link"
                         href={answer.node.url.url}
                       >
+                        <div className="portfolio-overlay"></div>
                         <img
                           className="portfolio-grid__img"
                           src={answer.node.featuredImage.node.sourceUrl}
